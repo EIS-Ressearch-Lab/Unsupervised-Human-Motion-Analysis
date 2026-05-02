@@ -1,0 +1,5 @@
+sheet,group,file,rows,seconds,sensor_columns
+S1,Control,S1_demo_signals.csv,4000,20.0,28
+S2,Control,S2_demo_signals.csv,4000,20.0,28
+S13,Injured,S13_demo_signals.csv,4000,20.0,28
+S17,Injured,S17_demo_signals.csv,4000,20.0,28
