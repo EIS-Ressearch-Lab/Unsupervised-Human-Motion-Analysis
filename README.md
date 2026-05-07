@@ -43,6 +43,10 @@ From this folder:
 run.cmd
 ```
 
+When `run.cmd` is started without command-line arguments, it prompts for
+subject IDs. Press Enter at the prompt to run all demo subjects, or enter a
+space-separated subset such as `S1 S13`.
+
 Run one subject only:
 
 ```cmd
@@ -53,6 +57,18 @@ Run a subset:
 
 ```cmd
 run.cmd S1 S13
+```
+
+The backward-compatible wrapper is also available:
+
+```cmd
+run_demo.cmd
+```
+
+You can also run the pipeline script directly after installing requirements:
+
+```cmd
+python demo_pipeline.py
 ```
 
 Outputs are written under:
@@ -73,6 +89,19 @@ For a single-subject run, the output folder is:
 Results/S1/
 ```
 
+## Notebook Walkthrough
+
+A step-by-step Jupyter notebook is available at:
+
+```text
+notebooks/demo_walkthrough.ipynb
+```
+
+After installing the requirements and opening the notebook in Jupyter, VS Code,
+or JupyterLab, run all cells from top to bottom. The notebook checks the demo
+files, calls the existing `demo_pipeline.py` script, and displays generated CSV
+and PNG outputs.
+
 ## Representative Outputs
 
 The most useful files to inspect are:
@@ -92,9 +121,11 @@ The most useful files to inspect are:
 ```text
 Data/                  small included demo snippets
 demo_pipeline.py       minimal reproducible analysis pipeline
+notebooks/             step-by-step Jupyter walkthrough
 prepare_demo_data.py   developer utility for regenerating demo snippets
 requirements.txt       Python dependencies
 run.cmd                Windows one-click entry point
+run_demo.cmd           backward-compatible wrapper for run.cmd
 Results/               generated outputs, ignored by git
 ```
 

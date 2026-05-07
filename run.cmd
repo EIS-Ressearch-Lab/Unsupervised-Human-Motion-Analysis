@@ -3,7 +3,7 @@ setlocal EnableExtensions
 
 REM Minimal reproducible demo pipeline.
 REM Double-click this file, or run from Command Prompt:
-REM   run.cmd
+REM   run.cmd          (prompt for subjects; press Enter for all)
 REM   run.cmd S1
 REM   run.cmd S1 S13
 
@@ -65,12 +65,21 @@ if errorlevel 1 (
     )
 )
 
+set "REQUESTED_SUBJECTS=%*"
+
 if "%~1"=="" (
+    echo Available demo subjects: S1 S2 S13 S17
+    echo.
+    set /P "REQUESTED_SUBJECTS=Enter subject IDs separated by spaces, or press Enter for all demo subjects: "
+    echo.
+)
+
+if "%REQUESTED_SUBJECTS: =%"=="" (
     echo Subjects: all demo subjects
     "%PYTHON_EXE%" %PYTHON_ARGS% -u demo_pipeline.py
 ) else (
-    echo Subjects: %*
-    "%PYTHON_EXE%" %PYTHON_ARGS% -u demo_pipeline.py --subject %*
+    echo Subjects: %REQUESTED_SUBJECTS%
+    "%PYTHON_EXE%" %PYTHON_ARGS% -u demo_pipeline.py --subject %REQUESTED_SUBJECTS%
 )
 if errorlevel 1 goto :error
 
